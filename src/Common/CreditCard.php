@@ -44,6 +44,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  * * company
  * * address1
  * * address2
+ * * address3
  * * city
  * * postcode
  * * state
@@ -66,6 +67,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  * * billingCompany
  * * billingAddress1
  * * billingAddress2
+ * * billingAddress3
  * * billingCity
  * * billingPostcode
  * * billingState
@@ -79,6 +81,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  * * shippingCompany
  * * shippingAddress1
  * * shippingAddress2
+ * * shippingAddress3
  * * shippingCity
  * * shippingPostcode
  * * shippingState
@@ -259,6 +262,7 @@ class CreditCard
             throw new InvalidCreditCardException('Card number should have 12 to 19 digits');
         }
     }
+    
     /**
      * Get Card Title.
      *
@@ -794,6 +798,27 @@ class CreditCard
     }
 
     /**
+     * Get the billing address, line 3.
+     *
+     * @return string
+     */
+    public function getBillingAddress3()
+    {
+        return $this->getParameter('billingAddress3');
+    }
+
+    /**
+     * Sets the billing address, line 3.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function setBillingAddress3($value)
+    {
+        return $this->setParameter('billingAddress3', $value);
+    }
+
+    /**
      * Get the billing city.
      *
      * @return string
@@ -1093,6 +1118,27 @@ class CreditCard
     }
 
     /**
+     * Get the shipping address, line 3.
+     *
+     * @return string
+     */
+    public function getShippingAddress3()
+    {
+        return $this->getParameter('shippingAddress3');
+    }
+
+    /**
+     * Sets the shipping address, line 3.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function setShippingAddress3($value)
+    {
+        return $this->setParameter('shippingAddress3', $value);
+    }
+
+    /**
      * Get the shipping city.
      *
      * @return string
@@ -1283,6 +1329,30 @@ class CreditCard
     {
         $this->setParameter('billingAddress2', $value);
         $this->setParameter('shippingAddress2', $value);
+
+        return $this;
+    }
+
+    /**
+     * Get the billing address, line 3.
+     *
+     * @return string
+     */
+    public function getAddress3()
+    {
+        return $this->getParameter('billingAddress3');
+    }
+
+    /**
+     * Sets the billing and shipping address, line 3.
+     *
+     * @param string $value
+     * @return $this
+     */
+    public function setAddress3($value)
+    {
+        $this->setParameter('billingAddress3', $value);
+        $this->setParameter('shippingAddress3', $value);
 
         return $this;
     }
